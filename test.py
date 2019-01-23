@@ -1,2 +1,2 @@
-# -*- coding: UTF-8 -*-
-print("你好，世界")
+greet = "Hello Bob"
+print(greet[0],greet[2],greet[4])
