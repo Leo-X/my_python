@@ -4,8 +4,8 @@
 
 
 def main():
-    message = "abcabc"
-    print('key:', message.capitalize())     #//
+    message = "aBcabc"
+    print('key:', message.capitalize())     # 首字符大写,其他小写
     print('key:', message.center(4))
     print('key:', message.center(5))
     print('key:', message.count("ab"))
