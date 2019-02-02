@@ -1,16 +1,18 @@
-import math
-import random
-import math
+# import math
+# import random
+# import math
+# import builtins
 
 
 def main():
-    t1 = (50)
-    print('t1:', type(t1) )
-        # 不加逗号，类型为整型
+    a = 10
 
-    t2 = ((1, 2, 4) + (4, 5, 6))
-    print('t2:', t2 )     # 加上逗号，类型为元组
-
+    def test():
+        nonlocal a
+        a = a + 1
+        print(a)
+    test()
+    print(a)
 
 
 main()
