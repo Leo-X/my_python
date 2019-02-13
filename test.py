@@ -5,14 +5,10 @@
 
 
 def main():
-    a = 10
+    a = bytearray('0','utf-8')
+    print('a:', a)
+    pr
 
-    def test():
-        nonlocal a
-        a = a + 1
-        print(a)
-    test()
-    print(a)
 
 
 main()
