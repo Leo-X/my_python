@@ -5,10 +5,9 @@
 
 
 def main():
-    a = bytearray('0','utf-8')
-    print('a:', a)
-    pr
 
+    a = 2
+    print('a:', a)
 
 
 main()
