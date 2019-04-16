@@ -2,24 +2,33 @@
 
 # 因为 nums[0] + nums[1] = 2 + 7 = 9
 
+# 朴素的串匹配算法
 
-nums = [2, 7, 11, 15]
-target = 9
-
-
-def twoSum(nums, target):
-    """
-    :type nums: List[int]
-    :type target: int
-    :rtype: List[int]
-    """
-    for i in range(len(nums)):
-        j = i+1
-        while j < len(nums):
-            if nums[i]+nums[j] == target:
-                return [i, j]
-            j += 1
+# 从小到大升序
+lst = [5, 4, 3, 1, 2, 0, 7, 8]
 
 
-print('key:', twoSum(nums, target))
+def insert_sort(arr):
+    for i in range(1, len(arr)):
+        a = arr[i]
+        j = i
+        while j > 0 and arr[j-1] > a:
+            arr[j], arr[j-1] = arr[j-1], arr[j]
+            j -= 1
 
+
+# insert_sort(lst)
+# print('lst:', lst)
+
+
+def select_sort(lst):
+    for i in range(len(lst)-1):
+        k = i
+        for j in range(i, len(lst)):
+            if lst[j] < lst[k]:
+                k = j
+        if i != k:
+            lst[i], lst[k] = lst[k], lst[i]
+
+select_sort(lst)
+print('lst:', lst)
