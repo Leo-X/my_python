@@ -30,5 +30,17 @@ def select_sort(lst):
         if i != k:
             lst[i], lst[k] = lst[k], lst[i]
 
-select_sort(lst)
+# select_sort(lst)
+# print('lst:', lst)
+
+
+def bubble_sort(lst):
+    a = len(lst)
+    for i in range(a):
+        for j in range(1, a-i):
+            if lst[j-1] > lst[j]:
+                lst[j-1], lst[j] = lst[j], lst[j-1]
+
+
+bubble_sort(lst)
 print('lst:', lst)
