@@ -15,18 +15,20 @@ import os
 SERVICE_ARGS = ['--load-images=false', '--disk-cache=false']
 chrome_options = Options()
 chrome_options.add_argument("--headless")
+chrome_options.add_argument('--disable-gpu')
 # 创建浏览器, 添加参数设置为无界面浏览器
 # driver = webdriver.Chrome(service_args=SERVICE_ARGS, chrome_options=chrome_options)
 driver = webdriver.Chrome(chrome_options=chrome_options,executable_path="C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe")
 #设置等待时间
-waite = WebDriverWait(driver, 8)
+waite = WebDriverWait(driver, 5)
 
 driver.get('https://btsow.pw/search/1080p')
-text01=driver.find_element_by_css_selector(".data-list .row hidden-xs .col-sm-8.col-lg-9.field").text
+# text01=driver.find_element_by_css_selector(".data-list .row hidden-xs .col-sm-8.col-lg-9.field").text
 print('\n')
 print('\n')
 print('\n')
-print('text01:', text01)
+print(driver)
+# print('text01:', text01)
 print('\n')
 print('\n')
 print('\n')
