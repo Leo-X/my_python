@@ -9,19 +9,28 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.options import Options
 from time import sleep
 import os
-executable_path = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe"
-os.environ["webdriver.chrome.driver"] = executable_path
-options = webdriver.ChromeOptions()  # 定义配置对象
-options.add_argument(
-    "--user-data-dir="+r"D:/Users/wangchuang/AppData/Local/Google/Chrome/User Data")
-# 指定用户的配置地址，并加载至配置对象中。
-options.add_argument("--headless")
 
+
+#不加载图片,不缓存在硬盘(内存)
 SERVICE_ARGS = ['--load-images=false', '--disk-cache=false']
-driver = webdriver.Chrome(executable_path, chrome_options=options)
-# 设置等待时间
-waite = WebDriverWait(driver, 3)
-driver.get('https://www.baidu.com/')
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+# 创建浏览器, 添加参数设置为无界面浏览器
+# driver = webdriver.Chrome(service_args=SERVICE_ARGS, chrome_options=chrome_options)
+driver = webdriver.Chrome(chrome_options=chrome_options,executable_path="C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe")
+#设置等待时间
+waite = WebDriverWait(driver, 8)
+
+driver.get('https://btsow.pw/search/1080p')
+text01=driver.find_element_by_css_selector(".data-list .row hidden-xs .col-sm-8.col-lg-9.field").text
+print('\n')
+print('\n')
+print('\n')
+print('text01:', text01)
+print('\n')
+print('\n')
+print('\n')
+driver.close()
 
 
 def main():
@@ -34,16 +43,19 @@ def main():
     driver.quit()
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     print('执行main:')
+#     main()
 
+# url01 = "https://btsow.pw/search/1080p"
+# chrome_options = webdriver.ChromeOptions()
+# chrome_options.add_argument('--headless')
+# chrome_options.add_argument('--disable-gpu')
+# driver = webdriver.Chrome(chrome_options=chrome_options,
+#                           executable_path="C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe")
 
-# //此处注意，有两个参数，后面那个参数，一定要写成 chrome_options=XX的形式，否则运行报错
-# driver = webdriver.Firefox()
-# driver = webdriver.Chrome()
-# driver.get("https://www.baidu.com/")
-# data = driver.find_element_by_id("s_mod_weather").text
-# 打印数据内容
+# driver.get(url01)
+# data = driver.find_element_by_xpath("/html/body/div[2]/div[4]/div[2]/a/div[1]/em").text
 # print('\n')
 # print('\n')
 # print('\n')
