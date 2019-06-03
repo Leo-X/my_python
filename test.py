@@ -23,10 +23,10 @@ driver = webdriver.Chrome(chrome_options=chrome_options,
                           executable_path="C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe")
 
 
-driver.implicitly_wait(2)  # 隐式等待 纯等待2秒
+driver.implicitly_wait(20)  # 隐式等待 纯等待2秒
 
-# driver.get('https://btsow.pw/search/1080p')
-driver.get('https://study.163.com/category/480000003121024')
+driver.get('https://btsow.pw//search//1080p')
+# driver.get('https://study.163.com/category/480000003121024')
 
 
 # driver.execute_script("window.scrollTo(100, document.body.scrollHeight);")
@@ -35,38 +35,57 @@ driver.get('https://study.163.com/category/480000003121024')
 # driver.find_element(By.ID,"find").send_keys(Keys.END)
 # sleep(2)
 # print('结束计时')
+
+
 sleep(5)
-
-
 driver.implicitly_wait(5)  # 查找元素的全局等待时间
 # 设置等待时间
 # WebDriverWait(driver, 5)
 # wait = WebDriverWait(driver, 5)
 try:
-    wait = WebDriverWait(driver, 2)
-    tt = wait.until(EC.presence_of_all_elements_located(
-        (By.CSS_SELECTOR, '.ux-category-breadcrumb-cat2-item.cat_item a[data-id="480000003121024"]'))
-    )
-    print('a 个数:', len(tt))
-    for item in tt:
-        # print('href:', item.get_attribute("href"))
-        print('item.text:', item.text)
-
-    print('当前窗口:', driver.current_window_handle)  # 输出当前窗口句柄
-    js01 = 'window.open("https://study.163.com/category/480000003124027");'
-    driver.execute_script(js01)
+    print('开始查找')
     sleep(2)
     windows = driver.window_handles  # 获取窗口列表
     for cur_window in windows:
-        if cur_window != driver.current_window_handle:
-            print('准备切换窗口')
-            sleep(2)
-            driver.switch_to_window(cur_window)
-            dd = wait.until(EC.presence_of_all_elements_located(
-                (By.CSS_SELECTOR, '.ux-category-breadcrumb-cat2-item.cat_item a[data-id="480000003123036"]'))
-            )
-            for item in dd:
-                print('item.text:', item.text)
+        print('准备切换窗口')
+        wait = WebDriverWait(driver, 5000)
+        dd = wait.until(EC.presence_of_all_elements_located(
+            (By.CSS_SELECTOR, 'a')
+        ))
+        for item in dd:
+            print('item.text:', item.text)
+        # if cur_window != driver.current_window_handle:
+        #     sleep(2)
+        #     driver.switch_to_window(cur_window)
+        #     wait = WebDriverWait(driver, 5)
+        #     dd = wait.until(EC.presence_of_all_elements_located(
+        #         (By.XPATH, './html/body/div[2]/h3[1]')
+        #     ))
+        #     for item in dd:
+        #         print('item.text:', item.text)
+    # tt = wait.until(EC.presence_of_all_elements_located(
+    #     (By.CSS_SELECTOR, '.data-list .row a')
+    # ))
+    # print('a 个数:', len(tt))
+    # for item in tt:
+    #     print('href:', item.get_attribute("href"))
+    #     print('item.text:', item.text)
+
+    # print('当前窗口:', driver.current_window_handle)  # 输出当前窗口句柄
+    # js01 = 'window.open("https://study.163.com/category/480000003124027");'
+    # driver.execute_script(js01)
+    # sleep(2)
+    # windows = driver.window_handles  # 获取窗口列表
+    # for cur_window in windows:
+    #     if cur_window != driver.current_window_handle:
+    #         print('准备切换窗口')
+    #         sleep(2)
+    #         driver.switch_to_window(cur_window)
+    #         dd = wait.until(EC.presence_of_all_elements_located(
+    #             (By.CSS_SELECTOR, '.ux-category-breadcrumb-cat2-item.cat_item a[data-id="480000003123036"]'))
+    #         )
+    #         for item in dd:
+    #             print('item.text:', item.text)
 
 finally:
     driver.quit()
